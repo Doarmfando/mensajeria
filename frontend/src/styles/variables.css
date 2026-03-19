@@ -1,0 +1,60 @@
+:root {
+  /* Colores principales */
+  --color-primary: #25d366;
+  --color-primary-dark: #128c7e;
+  --color-primary-light: #dcf8c6;
+  --color-secondary: #075e54;
+
+  /* Colores de fondo */
+  --bg-main: #f0f2f5;
+  --bg-white: #ffffff;
+  --bg-chat: #e5ddd5;
+  --bg-input: #f6f6f6;
+
+  /* Colores de texto */
+  --text-primary: #111b21;
+  --text-secondary: #667781;
+  --text-light: #ffffff;
+  --text-placeholder: #a0a0a0;
+
+  /* Colores de estado */
+  --color-success: #25d366;
+  --color-error: #e74c3c;
+  --color-warning: #f39c12;
+  --color-info: #3498db;
+
+  /* Bordes */
+  --border-color: #e0e0e0;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  /* Fuentes */
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 2rem;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Espaciado */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+  /* Transiciones */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+}

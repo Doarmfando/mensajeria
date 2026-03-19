@@ -1,0 +1,37 @@
+@import './variables.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--text-primary);
+  background-color: var(--bg-main);
+  line-height: 1.5;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  border: none;
+  outline: none;
+}
+
+input,
+textarea {
+  font-family: var(--font-family);
+  outline: none;
+  border: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+ul {
+  list-style: none;
+}

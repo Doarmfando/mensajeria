@@ -1,0 +1,99 @@
+@import '../../styles/variables.css';
+
+.result-summary {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.result-summary__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.result-summary__title {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+}
+
+.result-summary__close {
+  background: none;
+  font-size: var(--font-size-xl);
+  color: var(--text-secondary);
+}
+
+.result-summary__close:hover {
+  color: var(--text-primary);
+}
+
+.result-summary__stats {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.result-summary__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-md);
+  background-color: var(--bg-input);
+  border-radius: var(--border-radius-md);
+}
+
+.result-summary__stat--success {
+  background-color: var(--color-primary-light);
+}
+
+.result-summary__stat--error {
+  background-color: #fde8e8;
+}
+
+.result-summary__stat-value {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.result-summary__stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.result-summary__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.result-summary__detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-sm);
+}
+
+.result-summary__detail--sent {
+  background-color: var(--color-primary-light);
+}
+
+.result-summary__detail--failed {
+  background-color: #fde8e8;
+}
+
+.result-summary__detail-number {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.result-summary__detail-status {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+}

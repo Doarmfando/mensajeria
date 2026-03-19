@@ -1,0 +1,76 @@
+@import '../../styles/variables.css';
+
+.number-list {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.number-list--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.number-list__empty-text {
+  color: var(--text-placeholder);
+  font-size: var(--font-size-sm);
+}
+
+.number-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.number-list__count {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-secondary);
+}
+
+.number-list__clear {
+  font-size: var(--font-size-xs);
+  color: var(--color-error);
+  background: none;
+  text-decoration: underline;
+}
+
+.number-list__clear:hover {
+  opacity: 0.7;
+}
+
+.number-list__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.number-list__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  background-color: var(--color-primary-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-lg);
+}
+
+.number-list__number {
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+}
+
+.number-list__remove {
+  background: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  line-height: 1;
+  padding: 0 2px;
+}
+
+.number-list__remove:hover {
+  color: var(--color-error);
+}

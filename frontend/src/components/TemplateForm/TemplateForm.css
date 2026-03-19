@@ -1,0 +1,112 @@
+@import '../../styles/variables.css';
+
+.template-form {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.template-form__title {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.template-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.template-form__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.template-form__input,
+.template-form__select,
+.template-form__textarea {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-md);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.template-form__input:focus,
+.template-form__select:focus,
+.template-form__textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.template-form__select {
+  cursor: pointer;
+}
+
+.template-form__textarea {
+  min-height: 80px;
+}
+
+.template-form__hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-placeholder);
+}
+
+.template-form__btn {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-fast);
+  margin-top: var(--space-sm);
+}
+
+.template-form__btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.template-form__btn:disabled {
+  background-color: var(--text-placeholder);
+  cursor: not-allowed;
+}
+
+.template-form__file {
+  padding: var(--space-sm);
+  font-size: var(--font-size-sm);
+}
+
+.template-form__image-preview {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.template-form__image-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.template-form__image-remove {
+  background: none;
+  color: var(--color-error);
+  font-size: var(--font-size-xs);
+  text-decoration: underline;
+}
+
+.template-form__image-remove:hover {
+  opacity: 0.7;
+}

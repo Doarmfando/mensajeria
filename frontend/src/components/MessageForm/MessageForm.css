@@ -1,0 +1,115 @@
+@import '../../styles/variables.css';
+
+.message-form {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.message-form__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.message-form__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.message-form__row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.message-form__input,
+.message-form__select {
+  flex: 1;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-md);
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.message-form__input:focus,
+.message-form__select:focus {
+  border-color: var(--color-primary);
+}
+
+.message-form__select {
+  cursor: pointer;
+}
+
+.message-form__hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-placeholder);
+}
+
+.message-form__btn {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.message-form__btn--add {
+  background-color: var(--color-primary-dark);
+  color: var(--text-light);
+}
+
+.message-form__btn--add:hover {
+  background-color: var(--color-secondary);
+}
+
+.message-form__btn--send {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+  padding: var(--space-md) var(--space-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.message-form__btn--send:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.message-form__btn--send:disabled {
+  background-color: var(--text-placeholder);
+  cursor: not-allowed;
+}
+
+.message-form__preview {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.message-form__preview-label {
+  font-size: var(--font-size-xs);
+  color: var(--text-placeholder);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.message-form__preview-image {
+  color: var(--color-info);
+  font-style: italic;
+}
+
+.message-form__preview-footer {
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  font-style: italic;
+}
