@@ -30,7 +30,10 @@ function Login() {
     <div className="login">
       <div className="login__card">
         <div className="login__header">
-          <h1 className="login__title">Sistema de Mensajeria</h1>
+          <div className="login__brand">
+            <img src="/logo_icon.png" alt="Fortex" className="login__logo" />
+            <span className="login__brand-name">FORTEX</span>
+          </div>
           <p className="login__subtitle">WhatsApp Business</p>
         </div>
 

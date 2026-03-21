@@ -14,10 +14,23 @@
   align-items: center;
 }
 
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header__logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
 .header__title {
   color: var(--text-light);
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
+  letter-spacing: 2px;
 }
 
 .header__subtitle {

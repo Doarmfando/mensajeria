@@ -23,11 +23,25 @@
   margin-bottom: var(--space-xl);
 }
 
-.login__title {
+.login__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.login__logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.login__brand-name {
   color: var(--color-secondary);
   font-size: var(--font-size-xxl);
   font-weight: var(--font-weight-bold);
-  margin-bottom: var(--space-xs);
+  letter-spacing: 2px;
 }
 
 .login__subtitle {

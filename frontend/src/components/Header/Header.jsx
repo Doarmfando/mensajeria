@@ -9,8 +9,11 @@ function Header() {
     <header className="header">
       <div className="header__container">
         <div className="header__brand">
-          <h1 className="header__title">Sistema de Mensajeria</h1>
-          <p className="header__subtitle">WhatsApp Business</p>
+          <img src="/logo_icon.png" alt="Fortex" className="header__logo" />
+          <div>
+            <h1 className="header__title">FORTEX</h1>
+            <p className="header__subtitle">WhatsApp Business</p>
+          </div>
         </div>
         <nav className="header__nav">
           <NavLink to="/" className={({ isActive }) => `header__link ${isActive ? 'header__link--active' : ''}`}>
