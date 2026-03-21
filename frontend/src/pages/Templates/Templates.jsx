@@ -15,7 +15,7 @@ function Templates() {
     setLoadingList(true);
     try {
       const response = await getTemplates();
-      setTemplates(response.data.data);
+      setTemplates(response.data.data.filter(t => t.name !== 'hello_world'));
     } catch (err) {
       setError('Error al cargar templates');
     } finally {
