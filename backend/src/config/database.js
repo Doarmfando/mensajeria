@@ -2,13 +2,21 @@ const { Pool } = require("pg");
 const bcrypt = require("bcryptjs");
 const config = require("./env");
 
-const pool = new Pool({
-  host: config.db.host,
-  port: config.db.port,
-  database: config.db.database,
-  user: config.db.user,
-  password: config.db.password,
-});
+// Soporta DATABASE_URL (Supabase/produccion) o variables individuales (local)
+const poolConfig = process.env.DATABASE_URL
+  ? {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    }
+  : {
+      host: config.db.host,
+      port: config.db.port,
+      database: config.db.database,
+      user: config.db.user,
+      password: config.db.password,
+    };
+
+const pool = new Pool(poolConfig);
 
 async function query(text, params) {
   return pool.query(text, params);

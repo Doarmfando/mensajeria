@@ -49,18 +49,27 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/templates", templateRoutes);
 app.use("/api/logs", logRoutes);
 
-// Iniciar servidor
-async function start() {
-  await database.initialize();
-  app.listen(config.port, () => {
-    console.log(`Servidor corriendo en http://localhost:${config.port}`);
-    console.log(`Webhook URL: http://localhost:${config.port}/api/webhook`);
+// Inicializar BD
+let dbInitialized = false;
+app.use(async (req, res, next) => {
+  if (!dbInitialized) {
+    await database.initialize();
+    dbInitialized = true;
+  }
+  next();
+});
+
+// Iniciar servidor solo en local (no en Vercel)
+if (process.env.NODE_ENV !== "production") {
+  database.initialize().then(() => {
+    app.listen(config.port, () => {
+      console.log(`Servidor corriendo en http://localhost:${config.port}`);
+      console.log(`Webhook URL: http://localhost:${config.port}/api/webhook`);
+    });
+  }).catch((err) => {
+    console.error("Error iniciando servidor:", err.message);
+    process.exit(1);
   });
 }
-
-start().catch((err) => {
-  console.error("Error iniciando servidor:", err.message);
-  process.exit(1);
-});
 
 module.exports = app;
