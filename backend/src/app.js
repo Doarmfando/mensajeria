@@ -26,6 +26,16 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Inicializar BD (lazy, para serverless)
+let dbInitialized = false;
+app.use(async (req, res, next) => {
+  if (!dbInitialized) {
+    await database.initialize();
+    dbInitialized = true;
+  }
+  next();
+});
+
 // Rate limiting para login
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -48,16 +58,6 @@ app.use("/api", verifyToken);
 app.use("/api/messages", messageRoutes);
 app.use("/api/templates", templateRoutes);
 app.use("/api/logs", logRoutes);
-
-// Inicializar BD
-let dbInitialized = false;
-app.use(async (req, res, next) => {
-  if (!dbInitialized) {
-    await database.initialize();
-    dbInitialized = true;
-  }
-  next();
-});
 
 // Iniciar servidor solo en local (no en Vercel)
 if (process.env.NODE_ENV !== "production") {

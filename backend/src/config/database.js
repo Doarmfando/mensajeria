@@ -52,17 +52,17 @@ async function initialize() {
     CREATE INDEX IF NOT EXISTS idx_message_logs_wa_id ON message_logs(whatsapp_message_id);
   `);
 
-  // Seed admin user
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (!adminPassword) {
-    console.error("ADMIN_PASSWORD no configurado en .env");
-    process.exit(1);
-  }
+  // Seed admin user (solo si no existe y hay ADMIN_PASSWORD configurado)
   const existing = await pool.query("SELECT id FROM users WHERE username = $1", ["admin"]);
   if (existing.rows.length === 0) {
-    const hash = await bcrypt.hash(adminPassword, 12);
-    await pool.query("INSERT INTO users (username, password_hash) VALUES ($1, $2)", ["admin", hash]);
-    console.log("Usuario admin creado");
+    const adminPassword = process.env.ADMIN_PASSWORD;
+    if (adminPassword) {
+      const hash = await bcrypt.hash(adminPassword, 12);
+      await pool.query("INSERT INTO users (username, password_hash) VALUES ($1, $2)", ["admin", hash]);
+      console.log("Usuario admin creado");
+    } else {
+      console.warn("No hay usuarios y ADMIN_PASSWORD no esta configurado");
+    }
   }
 
   console.log("Base de datos inicializada");
