@@ -1,5 +1,6 @@
 const config = require("../config/env");
 const whatsappService = require("../services/whatsappService");
+const messageLogService = require("../services/messageLogService");
 
 /**
  * GET /api/webhook
@@ -40,6 +41,14 @@ async function receive(req, res) {
         if (change.field !== "messages") continue;
 
         const value = change.value;
+
+        // Procesar actualizaciones de estado de mensajes
+        const statuses = value.statuses || [];
+        for (const status of statuses) {
+          await messageLogService.updateStatusByWaId(status.id, status.status);
+          console.log(`Estado actualizado: ${status.id} -> ${status.status}`);
+        }
+
         const messages = value.messages || [];
         const contacts = value.contacts || [];
 

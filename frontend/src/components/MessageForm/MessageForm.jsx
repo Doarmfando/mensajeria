@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './MessageForm.css';
 
-function MessageForm({ onAddNumber, onSendTemplate, sending, templates = [] }) {
+function MessageForm({ onAddNumber, onSendTemplate, sending, templates = [], onSelectTemplate, pendingCount = 0 }) {
   const [phone, setPhone] = useState('');
   const [selectedTemplate, setSelectedTemplate] = useState('');
 
@@ -11,6 +11,13 @@ function MessageForm({ onAddNumber, onSendTemplate, sending, templates = [] }) {
     if (!cleaned) return;
     onAddNumber(cleaned);
     setPhone('');
+  }
+
+  function handleTemplateChange(e) {
+    const id = e.target.value;
+    setSelectedTemplate(id);
+    const template = templates.find((t) => t.id === id);
+    onSelectTemplate(template || null);
   }
 
   function handleSendTemplate() {
@@ -25,20 +32,22 @@ function MessageForm({ onAddNumber, onSendTemplate, sending, templates = [] }) {
       <div className="message-form__section">
         <label className="message-form__label">Agregar numero</label>
         <form className="message-form__row" onSubmit={handleAddNumber}>
+          <span className="message-form__prefix">+51</span>
           <input
             className="message-form__input"
             type="text"
-            placeholder="Ej: 51999999999"
+            placeholder="999 999 999"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {
+              const val = e.target.value.replace(/\D/g, '');
+              if (val.length <= 9) setPhone(val);
+            }}
+            maxLength={9}
           />
-          <button className="message-form__btn message-form__btn--add" type="submit">
+          <button className="message-form__btn message-form__btn--add" type="submit" disabled={phone.length !== 9}>
             Agregar
           </button>
         </form>
-        <span className="message-form__hint">
-          Incluir codigo de pais sin + (Ej: 51 para Peru)
-        </span>
       </div>
 
       <div className="message-form__section">
@@ -46,7 +55,7 @@ function MessageForm({ onAddNumber, onSendTemplate, sending, templates = [] }) {
         <select
           className="message-form__select"
           value={selectedTemplate}
-          onChange={(e) => setSelectedTemplate(e.target.value)}
+          onChange={handleTemplateChange}
         >
           <option value="">-- Selecciona un template --</option>
           {templates.map((t) => (
@@ -74,9 +83,9 @@ function MessageForm({ onAddNumber, onSendTemplate, sending, templates = [] }) {
         <button
           className="message-form__btn message-form__btn--send"
           onClick={handleSendTemplate}
-          disabled={sending || !selectedTemplate}
+          disabled={sending || !selectedTemplate || pendingCount === 0}
         >
-          {sending ? 'Enviando...' : 'Enviar a todos'}
+          {sending ? 'Enviando...' : `Enviar a pendientes (${pendingCount})`}
         </button>
       </div>
     </div>

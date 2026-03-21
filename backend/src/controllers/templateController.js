@@ -9,7 +9,7 @@ async function getAll(req, res) {
     res.json({ success: true, data: templates });
   } catch (error) {
     console.error("Error obteniendo templates:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    res.status(500).json({ success: false, error: "Error al obtener templates" });
   }
 }
 
@@ -23,8 +23,8 @@ async function getApproved(req, res) {
     console.log("Templates aprobados:", approved.map(t => ({ name: t.name, lang: t.language, components: t.components.map(c => c.type + (c.format ? ':' + c.format : '')) })));
     res.json({ success: true, data: approved });
   } catch (error) {
-    console.error("Error obteniendo templates aprobados:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error obteniendo templates aprobados:", error.message);
+    res.status(500).json({ success: false, error: "Error al obtener templates aprobados" });
   }
 }
 
@@ -70,8 +70,8 @@ async function create(req, res) {
 
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error creando template:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error creando template:", error.message);
+    res.status(500).json({ success: false, error: "Error al crear template" });
   }
 }
 
@@ -87,8 +87,8 @@ async function remove(req, res) {
     const result = await templateService.deleteTemplate(name);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error eliminando template:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error eliminando template:", error.message);
+    res.status(500).json({ success: false, error: "Error al eliminar template" });
   }
 }
 

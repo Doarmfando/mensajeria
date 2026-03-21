@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import './Header.css';
 
 function Header() {
+  const { username, logout } = useAuth();
+
   return (
     <header className="header">
       <div className="header__container">
@@ -16,6 +19,9 @@ function Header() {
           <NavLink to="/templates" className={({ isActive }) => `header__link ${isActive ? 'header__link--active' : ''}`}>
             Templates
           </NavLink>
+          <button className="header__logout" onClick={logout}>
+            {username} - Salir
+          </button>
         </nav>
       </div>
     </header>

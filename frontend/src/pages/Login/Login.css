@@ -1,0 +1,105 @@
+@import '../../styles/variables.css';
+
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary-dark) 100%);
+  padding: var(--space-md);
+}
+
+.login__card {
+  background-color: var(--bg-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-xxl) var(--space-xl);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login__header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.login__title {
+  color: var(--color-secondary);
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-xs);
+}
+
+.login__subtitle {
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.login__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.login__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.login__input {
+  padding: var(--space-sm) var(--space-md);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-md);
+  font-family: var(--font-family);
+  transition: border-color var(--transition-fast);
+  outline: none;
+}
+
+.login__input:focus {
+  border-color: var(--color-primary);
+}
+
+.login__input::placeholder {
+  color: var(--text-placeholder);
+}
+
+.login__button {
+  background-color: var(--color-primary);
+  color: var(--text-light);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  margin-top: var(--space-sm);
+  border: none;
+}
+
+.login__button:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+}
+
+.login__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login__error {
+  background-color: #fde8e8;
+  color: var(--color-error);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  border: 1px solid #f5c6c6;
+}

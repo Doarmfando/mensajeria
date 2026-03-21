@@ -40,6 +40,14 @@
   transition: border-color var(--transition-fast);
 }
 
+.message-form__prefix {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-secondary);
+  padding: var(--space-sm) 0;
+  white-space: nowrap;
+}
+
 .message-form__input:focus,
 .message-form__select:focus {
   border-color: var(--color-primary);
@@ -112,4 +120,33 @@
   color: var(--text-secondary);
   font-size: var(--font-size-xs);
   font-style: italic;
+}
+
+.message-form__saved {
+  margin-top: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.message-form__saved-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.message-form__saved-btn {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.message-form__saved-btn:hover {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
 }

@@ -1,4 +1,5 @@
 const whatsappService = require("../services/whatsappService");
+const messageLogService = require("../services/messageLogService");
 
 /**
  * POST /api/messages/send-text
@@ -15,8 +16,8 @@ async function sendText(req, res) {
     const result = await whatsappService.sendTextMessage(to, message);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error enviando texto:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error enviando texto:", error.message);
+    res.status(500).json({ success: false, error: "Error al enviar mensaje de texto" });
   }
 }
 
@@ -35,8 +36,8 @@ async function sendImage(req, res) {
     const result = await whatsappService.sendImageMessage(to, imageUrl, caption);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error enviando imagen:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error enviando imagen:", error.message);
+    res.status(500).json({ success: false, error: "Error al enviar imagen" });
   }
 }
 
@@ -55,8 +56,8 @@ async function sendDocument(req, res) {
     const result = await whatsappService.sendDocumentMessage(to, documentUrl, filename, caption);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error enviando documento:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error enviando documento:", error.message);
+    res.status(500).json({ success: false, error: "Error al enviar documento" });
   }
 }
 
@@ -75,8 +76,8 @@ async function sendTemplate(req, res) {
     const result = await whatsappService.sendTemplateMessage(to, templateName, languageCode, components);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error enviando template:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error enviando template:", error.message);
+    res.status(500).json({ success: false, error: "Error al enviar template" });
   }
 }
 
@@ -95,8 +96,8 @@ async function sendButtons(req, res) {
     const result = await whatsappService.sendButtonMessage(to, bodyText, buttons);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error enviando botones:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error enviando botones:", error.message);
+    res.status(500).json({ success: false, error: "Error al enviar botones" });
   }
 }
 
@@ -115,8 +116,8 @@ async function sendList(req, res) {
     const result = await whatsappService.sendListMessage(to, bodyText, buttonText, sections);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error enviando lista:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error enviando lista:", error.message);
+    res.status(500).json({ success: false, error: "Error al enviar lista" });
   }
 }
 
@@ -135,8 +136,8 @@ async function sendLocation(req, res) {
     const result = await whatsappService.sendLocationMessage(to, latitude, longitude, name, address);
     res.json({ success: true, data: result });
   } catch (error) {
-    console.error("Error enviando ubicacion:", error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+    console.error("Error enviando ubicacion:", error.message);
+    res.status(500).json({ success: false, error: "Error al enviar ubicacion" });
   }
 }
 
@@ -222,6 +223,17 @@ async function sendBulkTemplate(req, res) {
     }
 
     const results = await whatsappService.sendBulkTemplateMessage(numbers, templateName, languageCode, components);
+
+    // Registrar cada envio en la base de datos
+    for (const r of results) {
+      await messageLogService.logMessage(
+        r.number,
+        templateName,
+        r.status === "sent" ? "accepted" : "failed",
+        r.data?.messages?.[0]?.id || null,
+        r.status === "failed" ? JSON.stringify(r.error) : null
+      );
+    }
 
     const sent = results.filter((r) => r.status === "sent").length;
     const failed = results.filter((r) => r.status === "failed").length;
