@@ -150,3 +150,17 @@
   background-color: var(--color-primary-light);
   border-color: var(--color-primary);
 }
+
+@media (max-width: 480px) {
+  .message-form {
+    padding: var(--space-md);
+  }
+
+  .message-form__row {
+    flex-direction: column;
+  }
+
+  .message-form__btn--add {
+    width: 100%;
+  }
+}

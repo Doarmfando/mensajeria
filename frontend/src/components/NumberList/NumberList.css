@@ -127,3 +127,17 @@
   background-color: var(--text-placeholder);
   cursor: not-allowed;
 }
+
+@media (max-width: 480px) {
+  .number-list {
+    padding: var(--space-md);
+  }
+
+  .number-list__items {
+    flex-direction: column;
+  }
+
+  .number-list__item {
+    justify-content: space-between;
+  }
+}

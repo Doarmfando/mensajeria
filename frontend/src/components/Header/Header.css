@@ -81,3 +81,25 @@
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.5);
 }
+
+@media (max-width: 768px) {
+  .header__container {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .header__brand {
+    justify-content: center;
+  }
+
+  .header__nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .header__link,
+  .header__logout {
+    font-size: var(--font-size-xs);
+    padding: var(--space-xs) var(--space-sm);
+  }
+}

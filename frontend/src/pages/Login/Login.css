@@ -117,3 +117,18 @@
   text-align: center;
   border: 1px solid #f5c6c6;
 }
+
+@media (max-width: 480px) {
+  .login__card {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .login__logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .login__brand-name {
+    font-size: var(--font-size-xl);
+  }
+}

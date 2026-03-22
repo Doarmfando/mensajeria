@@ -110,3 +110,9 @@
 .template-form__image-remove:hover {
   opacity: 0.7;
 }
+
+@media (max-width: 480px) {
+  .template-form {
+    padding: var(--space-md);
+  }
+}
