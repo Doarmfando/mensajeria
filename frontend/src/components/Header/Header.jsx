@@ -2,10 +2,9 @@ import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import './Header.css';
 
-
-
 function Header() {
   const { username, logout } = useAuth();
+  const userInitial = username ? username.charAt(0).toUpperCase() : 'U';
 
   return (
     <header className="header">
@@ -43,14 +42,22 @@ function Header() {
           </nav>
 
           <div className="header__account">
-            <div className="header__user">
-              <span className="header__user-label">Sesión activa</span>
-              <span className="header__username">{username}</span>
+            <div className="header__profile">
+              <div className="header__avatar">{userInitial}</div>
+
+              <div className="header__user">
+                <span className="header__user-role">Administrador</span>
+                <span className="header__username">{username}</span>
+              </div>
             </div>
 
-            <button className="header__logout" onClick={logout}>
-              <span className="header__logout-icon">⟶</span>
-              <span>Salir</span>
+            <button
+              className="header__logout"
+              onClick={logout}
+              aria-label="Cerrar sesión"
+              title="Cerrar sesión"
+            >
+              <span className="header__logout-icon">↗</span>
             </button>
           </div>
         </div>

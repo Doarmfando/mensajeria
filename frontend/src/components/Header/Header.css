@@ -93,12 +93,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 22px;
+  gap: 24px;
   min-width: 0;
   flex: 1;
 }
 
-/* NAV NUEVO: más limpio, sin caja pesada */
 .header__nav {
   display: flex;
   align-items: center;
@@ -163,62 +162,89 @@
 .header__account {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 0;
+  gap: 10px;
   padding-left: 18px;
+  margin-left: 4px;
   border-left: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.header__profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 8px 12px 8px 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.header__avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.22);
+  flex-shrink: 0;
 }
 
 .header__user {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   min-width: 0;
 }
 
-.header__user-label {
-  color: rgba(255, 255, 255, 0.45);
+.header__user-role {
+  color: rgba(255, 255, 255, 0.46);
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  line-height: 1.1;
 }
 
 .header__username {
+  margin-top: 3px;
   color: #ffffff;
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  max-width: 180px;
+  max-width: 140px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.2;
 }
 
 .header__logout {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.88);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  height: 42px;
-  padding: 0 15px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
-  font-size: 0.88rem;
-  font-weight: 700;
   cursor: pointer;
   transition:
     background-color 0.2s ease,
     border-color 0.2s ease,
     transform 0.2s ease,
-    box-shadow 0.2s ease;
-  white-space: nowrap;
+    box-shadow 0.2s ease,
+    color 0.2s ease;
 }
 
 .header__logout:hover {
   background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.20);
+  color: #ffffff;
   transform: translateY(-1px);
   box-shadow: 0 10px 20px rgba(2, 8, 23, 0.18);
 }
@@ -263,13 +289,14 @@
     justify-content: space-between;
     width: 100%;
     padding-left: 0;
+    margin-left: 0;
     border-left: none;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 12px;
   }
 
-  .header__user {
-    align-items: flex-start;
+  .header__username {
+    max-width: 100%;
   }
 }
 
@@ -304,15 +331,14 @@
     gap: 10px;
   }
 
-  .header__user {
-    align-items: center;
-  }
-
-  .header__username {
-    max-width: 100%;
+  .header__profile {
+    width: 100%;
+    justify-content: flex-start;
   }
 
   .header__logout {
     width: 100%;
+    height: 46px;
+    border-radius: 16px;
   }
 }
