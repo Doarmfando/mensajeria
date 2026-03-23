@@ -10,7 +10,7 @@ function Header() {
       <div className="header__container">
         <div className="header__brand">
           <div className="header__logo-wrap">
-            <img src="/logo_icon.png" alt="Fortex" className="header__logo" />
+            <img src="/logo_icon_blanco.png" alt="Fortex" className="header__logo" />
           </div>
 
           <div className="header__brand-text">
